@@ -1,0 +1,22 @@
+// Mixin
+.clearfix() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+.device-set {
+  .clearfix;
+}
+
+.device-test {
+  float: left;
+  iframe {
+    border: 1px solid #CCC;
+  }
+}

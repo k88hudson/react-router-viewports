@@ -1,0 +1,34 @@
+{
+  "name": "react-viewport-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run dev && parallelshell \"npm run serve\" \"npm run watch:js\" \"npm run watch:css\"",
+    "css": "lessc ./src/style.less > ./public/style.css",
+    "js": "webpack -d",
+    "dev": "npm run css && npm run js",
+    "build": "mkdirp './dist' && babel --optional reactCompat src/viewport-test.jsx > ./dist/viewport-test.js",
+    "serve": "http-server ./public",
+    "watch:js": "npm run js -- --watch",
+    "watch:css": "autoless --source-map ./src ./public"
+  },
+  "author": "",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "react": "^0.13.1",
+    "react-router": "^0.13.2"
+  },
+  "devDependencies": {
+    "autoless": "^0.1.6",
+    "babel": "^4.7.16",
+    "babel-core": "^4.7.16",
+    "babel-loader": "^4.2.0",
+    "http-server": "^0.8.0",
+    "jsx-loader": "^0.12.2",
+    "less": "^2.4.0",
+    "mkdirp": "^0.5.0",
+    "parallelshell": "^1.1.1",
+    "webpack": "^1.7.3"
+  }
+}
