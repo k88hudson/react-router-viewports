@@ -10,8 +10,6 @@ npm test
 ## Usage
 
 ```jsx
-var ViewportTest = require('react-viewport-test');
-
 var router = (
   <Route handler={Page} path="/react">
     <Route name="docs" path="/docs" handler={Page}>
@@ -23,6 +21,22 @@ var router = (
     <DefaultRoute name="home" handler={Page}/>
   </Route>
 );
-
-<ViewportTest baseUrl={'http://localhost:4040'} routes={router} devices={['mobile', 'desktop']} />
 ```
+
+```jsx
+var ViewportTest = require('react-viewport-test');
+var nexus = {
+  id: 'nexus',
+  label: 'Nexus 4',
+  width: 384,
+  height: 640
+};
+
+<ViewportTest
+  baseUrl={'http://localhost:4040'}
+  routes={router}
+  devices={['mobile', 'desktop', nexus]}
+/>
+```
+
+![screenshot of output](https://k88hudson-screenshots.s3.amazonaws.com/screen-shots/k88mac@2x_2015-03-27_at_7.27.39_PM.png)
