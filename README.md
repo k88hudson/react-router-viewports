@@ -1,7 +1,13 @@
 # Viewport Tests
 
 ## Usage
+```jsx
+var RouterViewports = require('react-router-viewports');
+<RouterViewports routes={routes} />
+<RouterViewports urls={['/', '/foo', '/bar']} devices={['mobile', 'desktop']} />
+```
 
+## Complete Example
 ```jsx
 var router = (
   <Route path="/react">
@@ -25,7 +31,7 @@ var nexus = {
   height: 640
 };
 
-<ViewportTest
+<RouterViewports
 
   // Defaults to /
   baseUrl={'http://localhost:4040'}
