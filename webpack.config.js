@@ -1,6 +1,7 @@
 module.exports = {
   entry: {
-    tests: './tests/manual.tests.jsx'
+    tests: './tests/unit.tests.jsx',
+    testApp: './tests/test-app.jsx'
   },
   devtool: 'source-map', //not good for ff
   output: {

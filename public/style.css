@@ -1,0 +1,14 @@
+.device-set:before,
+.device-set:after {
+  content: " ";
+  display: table;
+}
+.device-set:after {
+  clear: both;
+}
+.device-test {
+  float: left;
+}
+.device-test iframe {
+  border: 1px solid #CCC;
+}

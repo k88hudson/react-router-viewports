@@ -1,17 +1,16 @@
 {
-  "name": "react-viewport-test",
+  "name": "react-router-viewports",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npm run dev && parallelshell \"npm run serve\" \"npm run watch:js\" \"npm run watch:css\"",
-    "css": "lessc ./src/style.less > ./public/style.css",
+    "pretest": "ncp node_modules/mocha/mocha.js public/mocha.js && ncp node_modules/mocha/mocha.css public/mocha.css && ncp node_modules/es5-shim/es5-shim.js public/es5-shim.js",
+    "test:browser": "npm run js && parallelshell \"npm run serve\" \"npm run watch:js\"",
+    "test": "mocha-phantomjs -s loadImages=false public/index.html",
     "js": "webpack -d",
-    "dev": "npm run css && npm run js",
-    "build": "mkdirp './dist' && babel --optional reactCompat src/viewport-test.jsx > ./dist/viewport-test.js",
+    "build": "mkdirp './dist' && babel --optional reactCompat src/router-viewports.jsx > ./dist/router-viewports.js",
     "serve": "http-server ./public",
-    "watch:js": "npm run js -- --watch",
-    "watch:css": "autoless --source-map ./src ./public"
+    "watch:js": "npm run js -- --watch"
   },
   "author": "",
   "license": "MPL-2.0",
@@ -24,11 +23,16 @@
     "babel": "^4.7.16",
     "babel-core": "^4.7.16",
     "babel-loader": "^4.2.0",
+    "es5-shim": "^4.1.0",
     "http-server": "^0.8.0",
     "jsx-loader": "^0.12.2",
     "less": "^2.4.0",
     "mkdirp": "^0.5.0",
+    "mocha": "^2.2.1",
+    "mocha-phantomjs": "^3.5.3",
     "parallelshell": "^1.1.1",
+    "phantomjs": "^1.9.16",
+    "should": "^5.2.0",
     "webpack": "^1.7.3"
   }
 }

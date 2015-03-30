@@ -1,23 +1,42 @@
-var React = require('react');
-var Router = require('react-router');
-var {Route, DefaultRoute} = Router;
+var React = require('react/addons');
+var {NotFoundRoute, Route, DefaultRoute} = require('react-router');
+var RouterViewports = require('../src/router-viewports.jsx');
 
+// Test Router
 var Page = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.func
+  },
   render: function () {
-    return (<div></div>);
+    return (<div>Hello world</div>);
   }
 });
 
-var routes = (
-  <Route handler={Page} path="/react">
-    <Route name="docs" path="/docs" handler={Page}>
-      <Route name="getting-started" path="/getting-started.html" handler={Page}/>
-      <Route name="tutorial" path="/tutorial.html" handler={Page}/>
-    </Route>
-    <Route name="support" path="/support.html" handler={Page}/>
-    <Route name="test" path="/test/:foo" handler={Page}/>
-    <DefaultRoute name="home" handler={Page}/>
-  </Route>
-);
+var NotFound = React.createClass({
+  render: function () {
+    return (<div>Not Found</div>);
+  }
+});
 
-module.exports = routes;
+var testRouter = (<Route>
+  <Route name="skipme" path="skipme/:blah" handler={Page} />
+  <Route name="name" path="name/:first/:last" validParams={[{first: 'kate', last: 'hudson'}]}  handler={Page} />
+  <Route name="animals" handler={Page}>
+    <DefaultRoute name="animalsMain" handler={Page} />
+    <Route name="dogs" path="dogs/:breed/:color" validParams={[{breed: 'dachshund', color: 'red'}]} handler={Page}/>
+  </Route>
+  <DefaultRoute name="main" handler={Page} />
+  <NotFoundRoute name="fourohfour" handler={NotFound} />
+</Route>);
+
+var testRouterOutput = [
+  '/',
+  '/name/kate/hudson',
+  '/animals',
+  '/animals/dogs/dachshund/red'
+];
+
+module.exports = {
+  router: testRouter,
+  urls: testRouterOutput
+};

@@ -1,4 +1,6 @@
 node_modules/
 npm-debug*
 public/*.bundle.js*
-public/style.css*
+public/mocha*
+public/es5-shim.js
+dist/

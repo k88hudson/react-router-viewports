@@ -1,6 +1,7 @@
 var React = require('react');
 var assign = require('react/lib/Object.assign');
-var buildRouteTree = require('./build-route-tree');
+var buildRouteTree = require('./build-route-tree/build-route-tree');
+var Route = require('react-router').Route;
 
 var DEVICES = {
   mobile: {
@@ -37,10 +38,10 @@ var DeviceTest = React.createClass({
   }
 });
 
-var ViewportTest = React.createClass({
+var RouterViewports = React.createClass({
   propTypes: {
     baseUrl: React.PropTypes.string,
-    routes: React.PropTypes.array,
+    routes: React.PropTypes.element,
     urls: React.PropTypes.array,
     gutter: React.PropTypes.number,
     devices: React.PropTypes.arrayOf(React.PropTypes.oneOfType([
@@ -75,15 +76,24 @@ var ViewportTest = React.createClass({
   render: function () {
     var devices = this.devices();
     return (<div className="route-set" style={{width: this.getContainerWidth() + 'px'}}>
-      {this.urls().map((url) => { return <div className="device-set">
-        <h2>Route: <a href={url} target="_blank">{url}</a></h2>
-        {devices.map((device, i) => {
-          var isLast = devices.length - i === 1;
-          return <DeviceTest {...device} url={url} gutter={isLast ? 0 : this.props.gutter} />
-        })}
-      </div>})}
+      {this.urls().map((url, i) => {
+        return (<div className="device-set" key={i}>
+          <h2>Route: <a href={url} target="_blank">{url}</a></h2>
+          {devices.map((device, j) => {
+            console.log(url);
+            var isLast = devices.length - i === 1;
+            var props = assign({}, device, {
+              url: url,
+              gutter: isLast ? 0 : this.props.gutter,
+              key: j,
+              ref: device.id + '_' + i
+            });
+            return <DeviceTest {...props} />;
+          })}
+        </div>);
+      })}
     </div>);
   }
 });
 
-module.exports = ViewportTest;
+module.exports = RouterViewports;
