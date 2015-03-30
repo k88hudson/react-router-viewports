@@ -1,6 +1,6 @@
 {
   "name": "react-router-viewports",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Test utility for loading routes into iframe viewport tests",
   "main": "dist/router-viewports.js",
   "scripts": {
