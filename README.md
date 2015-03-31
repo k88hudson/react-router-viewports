@@ -1,4 +1,5 @@
 # React Router Viewports
+![travis status](https://travis-ci.org/k88hudson/react-router-viewports.svg)
 
 Use this to create viewport manual tests from your React router or a list of urls.
 
