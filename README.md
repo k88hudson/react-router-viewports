@@ -1,4 +1,8 @@
-# Viewport Tests
+# React Router Viewports
+
+Use this to create viewport manual tests from your React router or a list of urls.
+
+![screenshot of output](https://k88hudson-screenshots.s3.amazonaws.com/screen-shots/k88mac@2x_2015-03-27_at_7.27.39_PM.png)
 
 ## Usage
 ```jsx
@@ -77,4 +81,3 @@ npm test - [runs tests]
 npm test:browser - [runs a server/tests in browser]
 ```
 
-![screenshot of output](https://k88hudson-screenshots.s3.amazonaws.com/screen-shots/k88mac@2x_2015-03-27_at_7.27.39_PM.png)
