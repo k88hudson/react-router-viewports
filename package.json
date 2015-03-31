@@ -6,9 +6,9 @@
   "scripts": {
     "pretest": "ncp node_modules/mocha/mocha.js public/mocha.js && ncp node_modules/mocha/mocha.css public/mocha.css && ncp node_modules/es5-shim/es5-shim.js public/es5-shim.js",
     "test:browser": "npm run js && parallelshell \"npm run serve\" \"npm run watch:js\"",
-    "test": "mocha-phantomjs -s loadImages=false public/index.html",
+    "test": "npm run build && mocha-phantomjs -s loadImages=false public/index.html",
     "js": "webpack -d",
-    "build": "ncp ./src ./dist && jsx --harmony ./src/router-viewports.jsx > ./dist/router-viewports.js && jsx --harmony ./src/build-route-tree/build-route-tree.js > ./dist/build-route-tree/build-route-tree.js",
+    "build": "npm run js && ncp ./src ./dist && jsx --harmony ./src/router-viewports.jsx > ./dist/router-viewports.js && jsx --harmony ./src/build-route-tree/build-route-tree.js > ./dist/build-route-tree/build-route-tree.js",
     "serve": "http-server ./public",
     "watch:js": "npm run js -- --watch"
   },
