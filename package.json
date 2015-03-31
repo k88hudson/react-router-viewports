@@ -8,7 +8,7 @@
     "test:browser": "npm run js && parallelshell \"npm run serve\" \"npm run watch:js\"",
     "test": "mocha-phantomjs -s loadImages=false public/index.html",
     "js": "webpack -d",
-    "build": "ncp ./src ./dist && babel --optional reactCompat ./src/router-viewports.jsx > ./dist/router-viewports.js && babel ./src/build-route-tree/build-route-tree.js > ./dist/build-route-tree/build-route-tree.js",
+    "build": "ncp ./src ./dist && babel ./src/router-viewports.jsx > ./dist/router-viewports.js && babel ./src/build-route-tree/build-route-tree.js > ./dist/build-route-tree/build-route-tree.js",
     "serve": "http-server ./public",
     "watch:js": "npm run js -- --watch"
   },
