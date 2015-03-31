@@ -8,15 +8,15 @@
     "test:browser": "npm run js && parallelshell \"npm run serve\" \"npm run watch:js\"",
     "test": "mocha-phantomjs -s loadImages=false public/index.html",
     "js": "webpack -d",
-    "build": "ncp ./src ./dist && babel ./src/router-viewports.jsx > ./dist/router-viewports.js && babel ./src/build-route-tree/build-route-tree.js > ./dist/build-route-tree/build-route-tree.js",
+    "build": "ncp ./src ./dist && jsx --harmony ./src/router-viewports.jsx > ./dist/router-viewports.js && jsx --harmony ./src/build-route-tree/build-route-tree.js > ./dist/build-route-tree/build-route-tree.js",
     "serve": "http-server ./public",
     "watch:js": "npm run js -- --watch"
   },
   "author": "",
   "license": "MPL-2.0",
   "dependencies": {
-    "react": "^0.13.1",
-    "react-router": "^0.13.2"
+    "react": "^0.12.2",
+    "react-router": "^0.12.4"
   },
   "devDependencies": {
     "autoless": "^0.1.6",
@@ -32,6 +32,7 @@
     "mocha-phantomjs": "^3.5.3",
     "parallelshell": "^1.1.1",
     "phantomjs": "^1.9.16",
+    "react-tools": "^0.13.1",
     "should": "^5.2.0",
     "webpack": "^1.7.3"
   }

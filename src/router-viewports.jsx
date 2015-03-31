@@ -80,8 +80,7 @@ var RouterViewports = React.createClass({
         return (<div className="device-set" key={i}>
           <h2>Route: <a href={url} target="_blank">{url}</a></h2>
           {devices.map((device, j) => {
-            console.log(url);
-            var isLast = devices.length - i === 1;
+            var isLast = devices.length - j === 1;
             var props = assign({}, device, {
               url: url,
               gutter: isLast ? 0 : this.props.gutter,
